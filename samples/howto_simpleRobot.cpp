@@ -1,6 +1,13 @@
-#include <simpleRobot.h>
+// -*- coding: utf-8 -*-
+// -*- lsst - c++ - *-
 
-#define PI 3.14159
+/**
+ * @author : % (Arturo Bertomeu-Motos)
+ * @email : % (arturobm90@gmail.com)
+ * @institution : % (Biomedical Neuroengineering Research Group (UMH) (https://nbio.umh.es/))
+ */
+
+#include <simpleRobot.h>
 
 int main()
 {
@@ -23,7 +30,7 @@ int main()
 	const int dof = 4;
 	string joints = "rppr";  //r: revolute, p:prismatic
 
-	double data_theta[dof] = { 0, PI / 2, 0, 0 };
+	double data_theta[dof] = { 0, M_PI / 2, 0, 0 };
 	Vector tmp_theta(dof, data_theta);
 
 	double data_d[dof] = { 33, 0, 0, 26 };
@@ -32,7 +39,7 @@ int main()
 	double data_a[dof] = { 0, 0, 0, 0 };
 	Vector tmp_a(dof, data_a);
 
-	double data_alpha[dof] = { 0, PI / 2, 0, 0 };
+	double data_alpha[dof] = { 0, M_PI / 2, 0, 0 };
 	Vector tmp_alpha(dof, data_alpha);
 
 	Robot *scara = new Robot(dof, joints, &tmp_theta, &tmp_d, &tmp_a, &tmp_alpha);
@@ -69,7 +76,7 @@ int main()
 	cout << "\t >> Matrix m3;" << endl;
 	cout << "\t >> scara->denavit(&m3, PI / 2, 4, 21, PI / 2);" << endl;
 	Matrix m3;
-	scara->denavit(&m3, PI / 2, 4, 21, PI / 2);
+	scara->denavit(&m3, M_PI / 2, 4, 21, M_PI / 2);
 	cout << m3 << endl;
 
 	system("pause");
@@ -107,7 +114,7 @@ int main()
 	cout << "\n*** Forward Kinematics of the End Effector:" << endl;
 	cout << "\t >> scara->fKine(&m, q);" << endl;
 
-	double data_q[4] = { PI / 2, 2, 2, -PI / 3 };
+	double data_q[4] = { M_PI / 2, 2, 2, -M_PI / 3 };
 	Vector q(4, data_q);
 	scara->fKine(&m, &q);
 	cout << m << endl;
